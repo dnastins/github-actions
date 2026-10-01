@@ -1,0 +1,29 @@
+name: Primeiro Workflow
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  executar-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+
+      - name: Verificar versão do Python
+        run: python --version
+
+      - name: Listar arquivos do projeto
+        run: ls -la
+
+      - name: Finalizar pipeline
+        run: echo "Pipeline executada com sucesso!"
